@@ -1,5 +1,7 @@
 # calculator.py
 
+import sys
+
 class Calculator:
     def __init__(self):
         self.operators = {
@@ -59,3 +61,12 @@ class Calculator:
         b = values.pop()
         a = values.pop()
         values.append(self.operators[operator](a, b))
+
+if __name__ == "__main__":
+    calculator = Calculator()
+    expression = " ".join(sys.argv[1:])
+    try:
+        result = calculator.evaluate(expression)
+        print(result)
+    except ValueError as e:
+        print(e)
